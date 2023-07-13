@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.dimassi.dslist.dto.GameDTO;
 import com.dimassi.dslist.dto.GameMinDTO;
 import com.dimassi.dslist.entities.Game;
+import com.dimassi.dslist.projection.GameMinProjection;
 import com.dimassi.dslist.repository.GameRepository;
 
 @Service
@@ -37,6 +38,14 @@ public class GameService {
 		Game result = gameRepository.findById(id).get();				//recebe um id e retorna o objeto desse id
 		GameDTO dto = new GameDTO(result);
 		return dto;
+	}
+	
+	
+	@Transactional(readOnly = true )      
+	public List<GameMinDTO> findByList(Long listId){	//retorna a lista da consulta SQL CUSTOMIZADA no GameRepository		
+		List<GameMinProjection> result = gameRepository.searchByList(listId);    //SQL CUSTOMIZADA no GameRepository
+		List<GameMinDTO> dto = result.stream().map(x -> new GameMinDTO(x)).toList();  //CONSTRUCTOR implementado no GameMinDTO
+		return dto;		
 	}
 	
 
