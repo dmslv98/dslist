@@ -4,7 +4,6 @@ import org.springframework.beans.BeanUtils;
 
 import com.dimassi.dslist.entities.Game;
 
-import ch.qos.logback.core.joran.util.beans.BeanUtil;
 
 public class GameDTO {    				//IMPORTANTE - Mesmos tendo os  campos do Game.java, é importante criar o GameDTO para evitar loop, em casos de dependências no Game.java
 	

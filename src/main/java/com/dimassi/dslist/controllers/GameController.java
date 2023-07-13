@@ -40,9 +40,7 @@ public class GameController {
 		GameDTO result = gameService.findById(id);		//retorna o objeto do id informado
 		return result;		
 	}
-	
-	
-	
+		
 	
 	
 	
